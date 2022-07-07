@@ -51,7 +51,7 @@ public class OrderScooterTest {
     @Test
     public void checkOrderScooterButtonTop() {
         createChromeDriver();
-        createSafariDriver();
+        //createSafariDriver();
         MainPage objMainPage = new MainPage (driver);
         objMainPage.waitForLoadMainPage();
         objMainPage.clickCloseCookie();
@@ -61,15 +61,18 @@ public class OrderScooterTest {
 
     @Test
     public void checkOrderScooterButtonBottom() {
-        createChromeDriver();
-        //createSafariDriver();
+       createChromeDriver();
+       //createSafariDriver();
         MainPage objMainPage = new MainPage (driver);
         objMainPage.waitForLoadMainPage();
         objMainPage.clickCloseCookie();
         objMainPage.clickOrderButtonBottom();
         checkOrderScooter();
     }
-
+    @After
+    public void teardown() {
+        driver.quit();
+    }
     public void checkOrderScooter() {
         //заполнение формы для кого самокат
         FormForOrderPage orderPage = new FormForOrderPage (driver);
@@ -95,8 +98,4 @@ public class OrderScooterTest {
         aboutRentPage.waitForLoadFinalPage();
     }
 
-    @After
-    public void teardown() {
-        driver.quit();
-    }
     }
